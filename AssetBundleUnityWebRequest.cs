@@ -103,6 +103,9 @@ namespace HutongGames.PlayMaker.Actions
 			}	
 			
 			// Request download
+			#if UNITY_IOS
+            			UnityEngine.iOS.Device.SetNoBackupFlag(uri);
+			#endif
 			request = UnityEngine.Networking.UnityWebRequest.GetAssetBundle(uri);
 			yield return request.Send();
 			
